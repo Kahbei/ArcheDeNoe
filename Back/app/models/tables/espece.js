@@ -33,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     regne: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.ENUM('Archaea','Bacteria','Protozoa','Chromista','Plantae','Fungi','Animalia'),
       allowNull: false
     }
   }, {

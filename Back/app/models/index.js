@@ -27,7 +27,7 @@ db.Sequelize = Sequelize;
 // Instance sequelize
 db.sequelize = sequelize;
 
-models = models.initModels(sequelize);
+const models = models.initModels(sequelize);
 
 // models
 db.acteur = models.acteur;

@@ -1,0 +1,16 @@
+.icon-monitor {
+  font-size: 2rem;
+  padding: 1rem;
+}
+
+.search-input {
+  width: 50%;
+  padding: 0.5rem;
+  border: none;
+  border-bottom: 2px solid var(--color-olive);
+}
+
+.search-input:focus {
+  border: none;
+  outline: solid var(--color-olive);
+}

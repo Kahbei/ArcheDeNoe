@@ -8,6 +8,7 @@ import alertLists from './alert.js';
 })
 export class AlertHomeComponent implements OnInit {
   alertLists: Object = alertLists;
+  searchText: any = '';
 
   constructor() {}
 

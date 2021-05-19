@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-4" *ngFor="let alertLi of alertLists">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ alertLi.img }}" class="card-img-top" alt="{{ alertLi.img }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ alertLi.name }}</h5>
+                <p class="card-text">{{ alertLi.desc }}</p>
+                <a href="#" class="btn btn-primary">Candidater</a>
+            </div>
+        </div>
+    </div>
+</div>

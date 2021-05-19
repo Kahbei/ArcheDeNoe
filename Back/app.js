@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-const especeRoute = require("./app/router/especeRoute");
+const especeRoute = require("./app/routes/especeRoute");
 
 // Take middleware index
 const middleware = require("./app/middleware");

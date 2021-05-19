@@ -6,6 +6,9 @@ const cookieParser = require("cookie-parser");
 
 const especeRoute = require("./app/router/especeRoute");
 
+// Take middleware index
+const middleware = require("./app/middleware");
+
 // Create app
 const app = express();
 
@@ -14,6 +17,7 @@ app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(middleware.checkAppToken);
 
 // database
 const db = require("./app/models");

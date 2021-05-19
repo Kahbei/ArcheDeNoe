@@ -1,8 +1,10 @@
 // Require
-const cors          = require("cors");
-const express       = require("express");
-const bodyParser    = require("body-parser");
-const cookieParser  = require("cookie-parser");
+const cors = require("cors");
+const express = require("express");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+
+const especeRoute = require("./app/router/especeRoute");
 
 // Create app
 const app = express();
@@ -15,7 +17,6 @@ app.use(cookieParser());
 
 // database
 const db = require("./app/models");
-
 db.sequelize.sync();
 
 // Route de base (par défaut)
@@ -23,14 +24,13 @@ app.get("/", (req, res) => {
     res.status(200).json({ message: "Welcome to PIM backend"});
 })
 
-
 // Routes
 // Exemple :
-// authRoute = require("./app/routes/auth.routes");
+app.use("/especes/", especeRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

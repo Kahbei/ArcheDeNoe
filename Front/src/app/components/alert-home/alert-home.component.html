@@ -1,6 +1,8 @@
 <div class="icon-crud">
-    <input type="text" [(ngModel)]="searchText" id="listSearch" class="search-input" placeholder="Cherchez une alerte">
-    <i class="bi bi-search icon-monitor"></i>
+    <div class="search-block">
+        <input type="text" [(ngModel)]="searchText" id="listSearch" class="search-input" placeholder="Cherchez une alerte">
+        <i class="bi bi-search icon-monitor"></i>
+    </div>
     <i class="bi bi-plus-lg icon-monitor"></i>
 </div>
 
@@ -11,7 +13,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ alertLi.name }}</h5>
                 <p class="card-text">{{ alertLi.desc }}</p>
-                <a href="#" class="btn btn-adno">Candidater</a>
+                <a routerLink="candidature" class="btn btn-adno">Candidater</a>
             </div>
         </div>
     </div>

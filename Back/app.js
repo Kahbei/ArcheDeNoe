@@ -5,6 +5,11 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const especeRoute = require("./app/routes/especeRoute");
+const candidatureRoute = require("./app/routes/candidatureRoute")
+const cuveRoute = require("./app/routes/cuveRoute")
+const personnelRoute = require("./app/routes/personnelRoute")
+const serveurRoute = require("./app/routes/serveurRoute")
+const tacheProjetRoute = require("./app/routes/tacheProjetRoute")
 
 // Take middleware index
 const middleware = require("./app/middleware");
@@ -31,6 +36,12 @@ app.get("/", (req, res) => {
 // Routes
 // Exemple :
 app.use("/especes/", especeRoute);
+app.use("/candidatures/", candidatureRoute);
+app.use("/cuves/", cuveRoute);
+app.use("/personnel/", personnelRoute);
+app.use("/serveurs/", serveurRoute);
+app.use("/tacheprojets/", tacheProjetRoute);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;

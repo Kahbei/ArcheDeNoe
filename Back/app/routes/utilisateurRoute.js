@@ -6,5 +6,6 @@ const controller = require("../controllers/utilisateurController");
 
 // récupère toutes les espèces
 router.get("/", controller.getAll);
+router.post("/login", controller.getOne)
 
 module.exports = router;

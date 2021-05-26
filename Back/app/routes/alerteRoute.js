@@ -6,5 +6,6 @@ const controller = require("../controllers/alerteController");
 
 // récupère toutes les espèces
 router.get("/", controller.getAll);
+router.post("/createOne", controller.createOne)
 
 module.exports = router;

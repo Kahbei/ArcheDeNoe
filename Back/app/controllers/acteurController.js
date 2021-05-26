@@ -1,13 +1,13 @@
-const especes = require('../models/index').espece;
+const acteurs = require('../models/index').acteur;
 const catchError = require('../models/index').catchFunction;
 
 exports.getAll = async (req, res) => {
     try {
-        const allEspeces = await especes.findAll();
+        const allActeurs = await acteurs.findAll();
         res.status(200).send({
             success: true,
-            message: "liste des espèces",
-            data: allEspeces
+            message: "liste des acteurs",
+            data: allActeurs
         });
     } catch(err) {
         catchError(err, res);

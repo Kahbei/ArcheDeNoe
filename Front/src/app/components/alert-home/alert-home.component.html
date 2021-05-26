@@ -1,19 +1,21 @@
-<div class="icon-crud">
-    <div class="search-block">
-        <input type="text" [(ngModel)]="searchText" id="listSearch" class="search-input" placeholder="Cherchez une alerte">
-        <i class="bi bi-search icon-monitor"></i>
+<div class="container my-4">
+    <div class="icon-crud">
+        <div class="search-block">
+            <input type="text" [(ngModel)]="searchText" id="listSearch" class="search-input" placeholder="Cherchez une alerte">
+            <i class="bi bi-search icon-monitor"></i>
+        </div>
+        <i class="bi bi-plus-lg icon-monitor"></i>
     </div>
-    <i class="bi bi-plus-lg icon-monitor"></i>
-</div>
 
-<div class="row justify-content-center">
-    <div class="col d-flex justify-content-center my-4" *ngFor="let alertLi of alertLists | searchFilter: searchText">
-        <div class="card" style="width: 18rem;">
-            <img src="{{ alertLi.img }}" class="card-img-top" alt="{{ alertLi.img }}">
-            <div class="card-body">
-                <h5 class="card-title">{{ alertLi.name }}</h5>
-                <p class="card-text">{{ alertLi.desc }}</p>
-                <a routerLink="candidature" class="btn btn-adno">Candidater</a>
+    <div class="row justify-content-center">
+        <div class="col d-flex justify-content-center my-4" *ngFor="let alertLi of alertLists | searchFilter: searchText">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ alertLi.img }}" class="card-img-top" alt="{{ alertLi.img }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ alertLi.name }}</h5>
+                    <p class="card-text">{{ alertLi.desc }}</p>
+                    <a routerLink="candidature" class="btn btn-adno">Candidater</a>
+                </div>
             </div>
         </div>
     </div>

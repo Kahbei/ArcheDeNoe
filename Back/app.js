@@ -4,11 +4,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
+
 const acteurRoute = require("./app/routes/acteurRoute");
 const alerteRoute = require("./app/routes/alerteRoute");
 const especeRoute = require("./app/routes/especeRoute");
-
-
 const candidatureRoute = require("./app/routes/candidatureRoute")
 const cuveRoute = require("./app/routes/cuveRoute")
 const personnelRoute = require("./app/routes/personnelRoute")

@@ -6,7 +6,7 @@ const controller = require('../controllers/candidatureController')
 
 // récupère toutes les candidatures
 router.get('/', controller.getAll);
-router.post('/createOne', controller.createOne);
-
+router.post('/create', controller.createOne);
+router.post('/delete', controller.deleteOne);
 
 module.exports = router;

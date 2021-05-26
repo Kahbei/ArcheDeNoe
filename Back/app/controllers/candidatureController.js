@@ -14,7 +14,7 @@ exports.getAll = async (req, res) => {
     }
 }
 
-exports.createOne = async (req, res, next) => {
+exports.createOne = async (req, res) => {
     try {
         // init du tableau d'erreur
         let attributeErrors = [];
@@ -22,19 +22,19 @@ exports.createOne = async (req, res, next) => {
         //
         if (!req.body.id_alerte) {
             attributeErrors.push("L'attribut \"id_alerte\" n'est pas défini")
-        } else if (req.body.id_alerte && typeof req.body.id_alerte !== "number") {
+        } else if (typeof req.body.id_alerte !== "number") {
             attributeErrors.push("L'attribut \"id_alerte\" n'est pas un number")
         }
 
         if (!req.body.id_utilisateur) {
             attributeErrors.push("L'attribut \"id_utilisateur\" n'est pas défini")
-        } else if (req.body.id_utilisateur && typeof req.body.id_utilisateur !== "number") {
+        } else if (typeof req.body.id_utilisateur !== "number") {
             attributeErrors.push("L'attribut \"id_utilisateur\" n'est pas un number")
         }
 
         if (!req.body.lettre_motivation) {
             attributeErrors.push("L'attribut \"lettre_motivation\" n'est pas défini")
-        } else if (req.body.lettre_motivation && typeof req.body.lettre_motivation !== "string") {
+        } else if (typeof req.body.lettre_motivation !== "string") {
             attributeErrors.push("L'attribut \"lettre_motivation\" n'est pas un string")
         }
 
@@ -71,3 +71,50 @@ exports.createOne = async (req, res, next) => {
         catchError(err, res);
     }
 }
+
+exports.deleteOne = async (req, res) => {
+    try {
+        // init du tableau d'erreur
+        let attributeErrors = [];
+
+        //
+        if (!req.body.id_candidature) {
+            attributeErrors.push("L'attribut \"id_candidature\" n'est pas défini")
+        } else if (typeof req.body.id_candidature !== "number") {
+            attributeErrors.push("L'attribut \"id_candidature\" n'est pas un number")
+        }
+
+        if (attributeErrors.length > 0) {
+            throw {
+                status: 400,
+                success: false,
+                message: "Les erreurs suivantes doivent être corrigées : ",
+                data: attributeErrors
+            };
+        }
+
+        const DeleteCandidature = await candidature.destroy({
+            where: {
+                id_candidature: req.body.id_candidature
+            }
+        })
+
+        if (!DeleteCandidature) {
+            throw {
+                status: 500,
+                success: false,
+                message: "Erreur lors de la suppression"
+            };
+        }
+
+        res.status(200).send({
+            success: true,
+            message: "La candidature a été supprimée avec succès !",
+            data: DeleteCandidature
+        })
+
+    } catch (err) {
+        catchError(err, res);
+    }
+}
+

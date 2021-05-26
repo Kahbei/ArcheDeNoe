@@ -1,10 +1,52 @@
 <div class="container my-4">
     <div class="icon-crud">
-        <div class="search-block">
-            <input type="text" [(ngModel)]="searchText" id="listSearch" class="search-input" placeholder="Cherchez une alerte">
-            <i class="bi bi-search icon-monitor"></i>
+
+        <div class="insert-block">
+            <button type="button" class="btn btn-adno" data-bs-toggle="modal" data-bs-target="#alertModal" data-bs-whatever="@mdo">
+                <i class="bi bi-plus-lg icon-monitor"></i>
+            </button>
+
+            <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="alertModalLabel">Nouvelle Alerte</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Image :</label>
+                                    <input type="file" class="form-control" id="image-name" #newImage>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Titre :</label>
+                                    <input type="text" name="title-alert" class="form-control" id="title-name" #newTitle required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Description :</label>
+                                    <textarea class="form-control" name="description-alert" id="message-text" #newDescription required></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" (click)="addNewAlert(newImage, newTitle, newDescription)">Ajouter</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <i class="bi bi-plus-lg icon-monitor"></i>
+
+        <div class="search-block">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="searchText" id="listSearch" class="form-control search-input" placeholder="Cherchez une alerte">
+                <div class="input-group-text search-icon">
+                    <i class="bi bi-search icon-monitor"></i>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div class="row justify-content-center">

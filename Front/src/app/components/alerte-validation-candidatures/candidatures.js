@@ -26,7 +26,7 @@ const candidaturesList = [
     {
         "id": "5",
         "nom": "But",
-        "prenom": "Marque",
+        "prenom": "Mark",
         "lettre": "bla bla",
     },
     {

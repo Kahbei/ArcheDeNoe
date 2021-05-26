@@ -1,6 +1,3 @@
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
-
 <div class="container ms-5 mt-3">
     <button id="boutonAlerte" type="button" class="btn btn-md w-25">Alerte "{{alerte}}"</button>
 </div>
@@ -21,26 +18,22 @@
                 <td>{{candidature.nom}}</td>
                 <td>{{candidature.prenom}}</td>
                 <td>
-                    <button (click)="setSaving($event.target)" class="btn btn-md mr-1 p-1 btn-primary w-50" type="button"
-                        data-bs-toggle="collapse" [attr.data-bs-target]="'#m' + candidature.id" aria-expanded="false"
-                        id="{{'id' + candidature.id}}">
+                    <button (click)="setSaving($event.target)" class="btn btn-md mr-1 p-1 btn-primary w-50"
+                        type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#m' + candidature.id"
+                        aria-expanded="false" id="{{'id' + candidature.id}}">
                         {{afficheText}}
                     </button>
                 </td>
                 <td>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Projet
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li *ngFor="let projet of projetsList"><a class="dropdown-item">{{projet.titre}}</a></li>
-                        </ul>
-                    </div>
+                    <select class="form-select w-75" aria-label="Default select example" size="1">
+                        <option selected>Projet</option>
+                        <option *ngFor="let projet of projetsList" value="{{projet.id}}">{{projet.titre}}</option>
+                    </select>
                 </td>
                 <td>
                     <div class="d-flex flex-row">
-                        <button type="button" class="btn btn-success btn-md w-50 p-1 me-1">Accepter</button>
+                        <button (click)="accept(candidature.id)" type="button"
+                            class="btn btn-success btn-md w-50 p-1 me-1">Accepter</button>
                         <button type="button" class="btn btn-danger btn-md w-50 p-1 ms-1">Refuser</button>
                     </div>
                 </td>

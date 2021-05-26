@@ -1,1 +1,57 @@
-<p>alerte-validation-candidatures works!</p>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+
+<div class="container ms-5 mt-3">
+    <button id="boutonAlerte" type="button" class="btn btn-md w-25">Alerte "{{alerte}}"</button>
+</div>
+
+<div class="container my-4">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Motivation</th>
+                <th scope="col">Projet affecté</th>
+                <th scope="col" class="w-25"></th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let candidature of candidaturesList">
+            <tr>
+                <td>{{candidature.nom}}</td>
+                <td>{{candidature.prenom}}</td>
+                <td>
+                    <button (click)="setSaving($event.target)" class="btn btn-md mr-1 p-1 btn-primary w-50" type="button"
+                        data-bs-toggle="collapse" [attr.data-bs-target]="'#m' + candidature.id" aria-expanded="false"
+                        id="{{'id' + candidature.id}}">
+                        {{afficheText}}
+                    </button>
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Projet
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li *ngFor="let projet of projetsList"><a class="dropdown-item">{{projet.titre}}</a></li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
+                    <div class="d-flex flex-row">
+                        <button type="button" class="btn btn-success btn-md w-50 p-1 me-1">Accepter</button>
+                        <button type="button" class="btn btn-danger btn-md w-50 p-1 ms-1">Refuser</button>
+                    </div>
+                </td>
+            </tr>
+            <td colspan="5">
+                <div class="collapse multi-collapse" id="{{'m' + candidature.id}}">
+                    <div class="card card-body">
+                        {{candidature.lettre}}
+                    </div>
+                </div>
+            </td>
+        </tbody>
+    </table>
+</div>

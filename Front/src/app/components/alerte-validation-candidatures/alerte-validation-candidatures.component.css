@@ -1,0 +1,8 @@
+#boutonAlerte{
+    background-color: var(--color-darkBrown);
+    color: white;
+}
+
+thead{
+    background-color: var(--color-main)
+}

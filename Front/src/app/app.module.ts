@@ -14,6 +14,7 @@ import { SitesComponent } from './components/sites/sites.component';
 import { TaxonomieComponent } from './components/taxonomie/taxonomie.component';
 import { TaxonomieDetailsComponent } from './components/taxonomie-details/taxonomie-details.component';
 import { CandidatureMotivationComponent } from './components/candidature-motivation/candidature-motivation.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CandidatureMotivationComponent } from './components/candidature-motivat
     TaxonomieDetailsComponent,
     CandidatureMotivationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

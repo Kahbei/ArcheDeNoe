@@ -27,6 +27,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.TINYINT,
       allowNull: false,
       defaultValue: 0
+    },
+    date_creation: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      defaultValue: "0001-01-01"
+    },
+    date_modification: {
+      type: DataTypes.DATEONLY,
+      allowNull: true
     }
   }, {
     sequelize,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import alertLists from './alert.js';
+import alertLists from '../../template/alert.js';
 
 @Component({
   selector: 'app-alert-home',
@@ -11,6 +11,16 @@ export class AlertHomeComponent implements OnInit {
   searchText: any = '';
 
   constructor() {}
+
+  addNewAlert(
+    img: HTMLInputElement,
+    title: HTMLInputElement,
+    description: HTMLInputElement
+  ) {
+    console.log(
+      `img : ${img.value} title : ${title.value} desc : ${description.value}`
+    );
+  }
 
   ngOnInit(): void {}
 }

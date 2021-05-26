@@ -4,7 +4,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
+const acteurRoute = require("./app/routes/acteurRoute");
+const alerteRoute = require("./app/routes/alerteRoute");
 const especeRoute = require("./app/routes/especeRoute");
+const lotRoute = require("./app/routes/lotRoute");
+const projetRoute = require("./app/routes/projetRoute");
+const siteStockageRoute = require("./app/routes/siteStockageRoute");
+const tracabiliteRoute = require("./app/routes/tracabiliteRoute");
+const utilisateurRoute = require("./app/routes/utilisateurRoute");
 
 // Take middleware index
 const middleware = require("./app/middleware");
@@ -30,7 +37,14 @@ app.get("/", (req, res) => {
 
 // Routes
 // Exemple :
+app.use("/alertes/", alerteRoute);
+app.use("/acteurs/", acteurRoute);
 app.use("/especes/", especeRoute);
+app.use("/lots/", lotRoute);
+app.use("/projets/", projetRoute);
+app.use("/site_stockages/", siteStockageRoute);
+app.use("/tracabilites/", tracabiliteRoute);
+app.use("/utilisateurs/", utilisateurRoute);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;

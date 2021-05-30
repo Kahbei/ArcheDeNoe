@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import alertLists from '../../template/alert.js';
+import { Subscriber } from 'rxjs';
+import { AlerteService } from 'src/app/services/alerte.service';
+// import alertLists from '../../template/alert.js';
 
 @Component({
   selector: 'app-alert-home',
@@ -7,10 +9,14 @@ import alertLists from '../../template/alert.js';
   styleUrls: ['./alert-home.component.css'],
 })
 export class AlertHomeComponent implements OnInit {
-  alertLists: Object = alertLists;
+  alertLists: any;
   searchText: any = '';
 
-  constructor() {}
+  constructor(private service: AlerteService) {}
+
+  getAlertLists() {
+    this.alertLists = this.service.getAllAlert();
+  }
 
   addNewAlert(
     img: HTMLInputElement,
@@ -22,5 +28,7 @@ export class AlertHomeComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAlertLists();
+  }
 }

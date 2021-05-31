@@ -15,6 +15,11 @@ export class PersonnelsComponent implements OnInit {
 
   siteList: Object = siteList;
 
+  nom: string = '';
+  prenom: string = '';
+  poste: string = '';
+  email: string = '';
+
   constructor(private service: PersonnelService) { }
 
   getPersonnelList() {
@@ -24,13 +29,23 @@ export class PersonnelsComponent implements OnInit {
 
   updateMember(idMember) {
     var elem = document.getElementsByClassName("it" + idMember);
-    console.log(elem)
     for (var i = 0; i < elem.length; i++) {
       if ((elem[i] as any).disabled == false) {
         (elem[i] as any).disabled = true
       } else {
         (elem[i] as any).disabled = false
       }
+    }
+  }
+
+  deleteMember(idMember){
+    console.log(idMember);
+    var elem = document.getElementsByClassName("it" + idMember);
+    for (var i = 0; i < elem.length; i++) {
+      this.nom = (elem[1] as any).value;
+      this.prenom = (elem[2] as any).value;
+      this.poste = (elem[3] as any).value;
+      this.email = (elem[4] as any).value;
     }
   }
 

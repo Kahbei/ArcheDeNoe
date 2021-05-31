@@ -56,10 +56,44 @@
                     </div>
                 </div>
             </div>
+
+            <!-- new -->
+
+            <div class="modal fade" id="alertModal2" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="alertModalLabel">Suppression d'un membre du personnel</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="mb-5">Êtes vous certain de vouloir supprimer un membre du personnel ?</h4>
+                            <div class="d-flex flex-row bd-highlight mb-3">
+                                <p>nom : </p>
+                                <p>{{nom}}</p>
+                            </div>
+                            <div class="d-flex flex-row bd-highlight mb-3">
+                                <p>prenom : </p>
+                                <p>{{prenom}}</p>
+                            </div><div class="d-flex flex-row bd-highlight mb-3">
+                                <p>poste : </p>
+                                <p>{{poste}}</p>
+                            </div><div class="d-flex flex-row bd-highlight mb-3">
+                                <p>email : </p>
+                                <p>{{email}}</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Supprimer</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end new-->
+
         </div>
-
-
-
     </div>
     <!-- -----END SEARCH AND INSERT BLOCK----- -->
 
@@ -73,18 +107,26 @@
             </thead>
             <tbody *ngFor="let personnelValue of personnelLists | searchFilter : searchText">
                 <tr>
-                    <th scope="row"><input type="text" value="{{ personnelValue.id_personnel }}" class="{{'it' + personnelValue.id_personnel}}" disabled></th>
-                    <td><input *ngIf="updated" type="text" value="{{ personnelValue.nom }}" class="{{'it' + personnelValue.id_personnel}}" disabled></td>
-                    <td><input type="text" value="{{ personnelValue.prenom }}" class="{{'it' + personnelValue.id_personnel}}" disabled></td>
-                    <td><input type="text" value="{{ personnelValue.poste }}" class="{{'it' + personnelValue.id_personnel}}" disabled></td>
-                    <td><input type="text" value="{{ personnelValue.email }}" class="{{'it' + personnelValue.id_personnel}}" disabled></td>
-                    <td><input type="text" value="{{ personnelValue.id_site }}" class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <th scope="row"><input type="text" value="{{ personnelValue.id_personnel }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></th>
+                    <td><input type="text" value="{{ personnelValue.nom }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.prenom }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.poste }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.email }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.id_site }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
                     <th>
-                        <button (click)="updateMember(personnelValue.id_personnel)" type="button" class="btn btn-adno" id="{{'bm'+personnelValue.id_personnel}}">
+                        <button (click)="updateMember(personnelValue.id_personnel)" type="button" class="btn btn-adno"
+                            id="{{'bm'+personnelValue.id_personnel}}">
                             <i class="bi bi-pen"></i>
                         </button>
 
-                        <button type="button" class="btn btn-adno" id="{{'bd'+personnelValue.id_personnel}}">
+                        <button (click)="deleteMember(personnelValue.id_personnel)" type="button" class="btn btn-danger"
+                        data-bs-toggle="modal" data-bs-target="#alertModal2" data-bs-whatever="@mdo">
                             <i class="bi bi-x"></i>
                         </button>
                     </th>
@@ -92,7 +134,7 @@
             </tbody>
         </table>
 
-        
+
         <div class="d-flex flex-row-reverse">
             <button type="button" class="btn btn-success p-2 mt-4 ms-3" id="btnSave">Sauvegarder</button>
             <button type="button" class="btn btn-danger p-2 mt-4 me-3" id="btnDelete">Annuler</button>

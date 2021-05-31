@@ -61,9 +61,9 @@ TABLES_ADN.SERVEUR.map((e) => {
   e.id_site = TABLES_ADN.SITE_STOCKAGE.find((f) => f.id_site === e.id_site);
 });
 
-// TABLES_ADN.TACHE_PROJET.map((e) => {
-//   e.id_projet = TABLES_ADN.PROJET.find((f) => f.id_projet === e.id_projet);
-// });
+TABLES_ADN.TACHE_PROJET.map((e) => {
+  e.id_alerte = TABLES_ADN.ALERT.find((f) => f.id_alerte === e.id_alerte);
+});
 
 TABLES_ADN.TRACABILITE.map((e) => {
   e.id_lot = TABLES_ADN.LOT.find((f) => f.id_lot === e.id_lot);

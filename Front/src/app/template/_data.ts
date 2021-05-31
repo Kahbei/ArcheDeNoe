@@ -32,6 +32,7 @@ TABLES_ADN.ACTEUR.map((e) => {
   e.id_candidature = TABLES_ADN.CANDIDATURE.find(
     (f) => f.id_candidature === e.id_candidature
   );
+  e.id_projet = TABLES_ADN.CANDIDATURE.find((f) => f.id_projet === e.id_projet);
 });
 
 TABLES_ADN.ALERT.map((e) => {

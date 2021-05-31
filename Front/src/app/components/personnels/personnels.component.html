@@ -117,7 +117,7 @@
                             class="{{'it' + personnelValue.id_personnel}}" disabled></td>
                     <td><input type="text" value="{{ personnelValue.email }}"
                             class="{{'it' + personnelValue.id_personnel}}" disabled></td>
-                    <td><input type="text" value="{{ personnelValue.id_site }}"
+                    <td><input type="text" value="{{ personnelValue.id_site.ville }}"
                             class="{{'it' + personnelValue.id_personnel}}" disabled></td>
                     <th>
                         <button (click)="updateMember(personnelValue.id_personnel)" type="button" class="btn btn-adno"

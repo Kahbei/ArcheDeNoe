@@ -30,7 +30,22 @@ export class AlerteValidationCandidaturesComponent implements OnInit {
     }
   }
 
-  constructor() {}
+  accept(idUser) {
+    var idProject;
+    idProject = (<HTMLSelectElement>document.getElementById('s' + idUser)).value;
+    if (idProject != 0) {
+      console.log(idUser + " - " + idProject);
+    } else {
+      alert("Aucun projet n'a été choisi")
+    }
+  }
 
-  ngOnInit(): void {}
+  refuse(idUser) {
+    console.log(idUser)
+    return idUser;
+  }
+
+  constructor() { }
+
+  ngOnInit(): void { }
 }

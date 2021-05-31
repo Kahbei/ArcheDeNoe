@@ -25,16 +25,20 @@
                     </button>
                 </td>
                 <td>
-                    <select class="form-select w-75" aria-label="Default select example" size="1">
-                        <option selected>Projet</option>
+                    <select class="form-select w-75" aria-label="Default select example" size="1"
+                        id="{{'s' + candidature.id}}">
+                        <option selected value="0">Projet</option>
                         <option *ngFor="let projet of projetsList" value="{{projet.id}}">{{projet.titre}}</option>
                     </select>
                 </td>
                 <td>
                     <div class="d-flex flex-row">
                         <button (click)="accept(candidature.id)" type="button"
-                            class="btn btn-success btn-md w-50 p-1 me-1">Accepter</button>
-                        <button type="button" class="btn btn-danger btn-md w-50 p-1 ms-1">Refuser</button>
+                            class="btn btn-success btn-md w-50 p-1 me-1">Accepter
+                        </button>
+                        <button (click)="refuse(candidature.id)" type="button"
+                            class="btn btn-danger btn-md w-50 p-1 ms-1">Refuser
+                        </button>
                     </div>
                 </td>
             </tr>

@@ -50,7 +50,7 @@
                     <th scope="col" class="{{taxoKey}}-col" *ngFor="let taxoKey of taxonomyKeys">{{ taxoKey }}</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let taxoValue of taxonomyLists">
+            <tbody *ngFor="let taxoValue of taxonomyLists | searchFilter : searchText">
                 <tr>
                     <th scope="row">{{taxoValue.id_espece}}</th>
                     <td>{{ taxoValue.nom }}</td>

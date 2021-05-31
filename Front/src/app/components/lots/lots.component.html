@@ -50,7 +50,7 @@
                     <th scope="col" *ngFor="let lotKey of lotKeys">{{ lotKey }}</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let lotValue of lotLists">
+            <tbody *ngFor="let lotValue of lotLists | searchFilter : searchText">
                 <tr>
                     <th scope="row">{{lotValue.id_lot}}</th>
                     <td>{{ lotValue.type }}</td>

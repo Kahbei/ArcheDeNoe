@@ -16,17 +16,9 @@
                         </div>
                         <div class="modal-body">
                             <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Image :</label>
-                                    <input type="file" class="form-control" id="image-name" #newImage>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Titre :</label>
-                                    <input type="text" name="title-alert" class="form-control" id="title-name" #newTitle required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Description :</label>
-                                    <textarea class="form-control" name="description-alert" id="message-text" #newDescription required></textarea>
+                                <div class="mb-3" *ngFor="let formKey of lotKeys">
+                                    <label for="recipient-name" class="col-form-label">{{ formKey }} :</label>
+                                    <input type="text" class="form-control" id="image-name" #new{{formKey}}>
                                 </div>
                             </form>
                         </div>
@@ -52,34 +44,21 @@
     <!-- -----END SEARCH AND INSERT BLOCK----- -->
 
     <div class="table-responsive mt-4">
-        <table class="table">
-            <thead>
+        <table class="table table-hover">
+            <thead class="table-dark">
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col" *ngFor="let lotKey of lotKeys">{{ lotKey }}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let lotValue of lotLists">
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
+                    <th scope="row">{{lotValue.id_lot}}</th>
+                    <td>{{ lotValue.type }}</td>
+                    <td>{{ lotValue.id_espece }}</td>
+                    <td>{{ lotValue.id_cuve }}</td>
+                    <td>{{ lotValue.nom }}</td>
                 </tr>
             </tbody>
         </table>
-    </div>
+      </div>
 </div>

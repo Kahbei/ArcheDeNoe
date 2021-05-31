@@ -52,12 +52,12 @@
     <!-- -----END SEARCH AND INSERT BLOCK----- -->
 
     <div class="row justify-content-center">
-        <div class="col d-flex justify-content-center my-4" *ngFor="let alertLi of alertLists | searchFilter: searchText">
+        <div class="col d-flex justify-content-center my-4" *ngFor="let alertList of alertLists | searchFilter: searchText">
             <div class="card" style="width: 18rem;">
-                <img src="{{ alertLi.img }}" class="card-img-top" alt="{{ alertLi.img }}">
                 <div class="card-body">
-                    <h5 class="card-title">{{ alertLi.name }}</h5>
-                    <p class="card-text">{{ alertLi.desc }}</p>
+                    <h5 class="card-title">{{ alertList.libelle }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ alertList.id_espece.nom}}</h6>
+                    <p class="card-text">{{ alertList.description }}</p>
                     <a routerLink="candidature" class="btn btn-adno">Candidater</a>
                 </div>
             </div>

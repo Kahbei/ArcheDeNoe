@@ -24,4 +24,43 @@ const TABLES_ADN = {
   UTILISATEUR: UTILISATEUR,
 };
 
+// TABLES_ADN.ACTEUR.map((e) => {
+//   e.id_candidature = TABLES_ADN.CANDITATURE.find((f) => f.id_candidature === e.id_candidature);
+// });
+
+TABLES_ADN.ALERT.map((e) => {
+  e.id_espece = TABLES_ADN.ESPECE.find((f) => f.id_espece === e.id_espece);
+});
+
+TABLES_ADN.CUVE.map((e) => {
+  e.id_site = TABLES_ADN.SITE_STOCKAGE.find((f) => f.id_site === e.id_site);
+});
+
+TABLES_ADN.LOT.map((e) => {
+  e.id_espece = TABLES_ADN.ESPECE.find((f) => f.id_espece === e.id_espece);
+  e.id_cuve = TABLES_ADN.CUVE.find((f) => f.id_cuve === e.id_cuve);
+});
+
+TABLES_ADN.PERSONNEL.map((e) => {
+  e.id_site = TABLES_ADN.SITE_STOCKAGE.find((f) => f.id_site === e.id_site);
+});
+
+TABLES_ADN.SERVEUR.map((e) => {
+  e.id_site = TABLES_ADN.SITE_STOCKAGE.find((f) => f.id_site === e.id_site);
+});
+
+// TABLES_ADN.TACHE_PROJET.map((e) => {
+//   e.id_projet = TABLES_ADN.PROJET.find((f) => f.id_projet === e.id_projet);
+// });
+
+TABLES_ADN.TRACABILITE.map((e) => {
+  e.id_lot = TABLES_ADN.LOT.find((f) => f.id_lot === e.id_lot);
+});
+
+TABLES_ADN.UTILISATEUR.map((e) => {
+  e.id_personnel = TABLES_ADN.PERSONNEL.find(
+    (f) => f.id_personnel === e.id_personnel
+  );
+});
+
 export default TABLES_ADN;

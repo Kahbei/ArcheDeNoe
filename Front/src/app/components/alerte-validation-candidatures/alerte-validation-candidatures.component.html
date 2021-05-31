@@ -15,37 +15,37 @@
         </thead>
         <tbody *ngFor="let candidature of candidaturesList">
             <tr>
-                <td>{{candidature.nom}}</td>
-                <td>{{candidature.prenom}}</td>
+                <td>{{candidature.id_utilisateur.id_personnel.nom}}</td>
+                <td>{{candidature.id_utilisateur.id_personnel.prenom}}</td>
                 <td>
                     <button (click)="setSaving($event.target)" class="btn btn-md mr-1 p-1 btn-primary w-50"
-                        type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#m' + candidature.id"
-                        aria-expanded="false" id="{{'id' + candidature.id}}">
+                        type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#m' + candidature.id_candidature"
+                        aria-expanded="false" id="{{'id' + candidature.id_candidature}}">
                         {{afficheText}}
                     </button>
                 </td>
                 <td>
                     <select class="form-select w-75" aria-label="Default select example" size="1"
-                        id="{{'s' + candidature.id}}">
+                        id="{{'s' + candidature.id_candidature}}">
                         <option selected value="0">Projet</option>
-                        <option *ngFor="let projet of projetsList" value="{{projet.id}}">{{projet.titre}}</option>
+                        <option *ngFor="let projet of projetsList" value="{{projet.id_projet}}">{{projet.titre}}</option>
                     </select>
                 </td>
                 <td>
                     <div class="d-flex flex-row">
-                        <button (click)="accept(candidature.id)" type="button"
+                        <button (click)="accept(candidature.id_candidature)" type="button"
                             class="btn btn-success btn-md w-50 p-1 me-1">Accepter
                         </button>
-                        <button (click)="refuse(candidature.id)" type="button"
+                        <button (click)="refuse(candidature.id_candidature)" type="button"
                             class="btn btn-danger btn-md w-50 p-1 ms-1">Refuser
                         </button>
                     </div>
                 </td>
             </tr>
             <td colspan="5">
-                <div class="collapse multi-collapse" id="{{'m' + candidature.id}}">
+                <div class="collapse multi-collapse" id="{{'m' + candidature.id_candidature}}">
                     <div class="card card-body">
-                        {{candidature.lettre}}
+                        {{candidature.lettre_motivation}}
                     </div>
                 </div>
             </td>

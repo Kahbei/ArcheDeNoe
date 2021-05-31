@@ -1,13 +1,16 @@
-const projetsList = [
-    {
-        "id": "1",
-        "titre": "Koala",
-    },
-    {
-        "id": "2",
-        "titre": "Panda",
-    },
-    
-]
+const PROJET = [
+  {
+    id_projet: "1",
+    id_alerte: "1",
+    titre: "Koala",
+    livre_sauvetage: "",
+  },
+  {
+    id_projet: "2",
+    id_alerte: "1",
+    titre: "Panda",
+    livre_sauvetage: "",
+  },
+];
 
-export default projetsList;
+export default PROJET;

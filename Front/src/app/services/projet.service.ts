@@ -4,10 +4,10 @@ import TABLES_ADN from '../template/_data';
 @Injectable({
   providedIn: 'root',
 })
-export class CandidatureService {
+export class ProjetService {
   constructor() {}
 
-  getAllCanditatures() {
-    return TABLES_ADN.CANDIDATURE;
+  getAllProjets() {
+    return TABLES_ADN.PROJET;
   }
 }

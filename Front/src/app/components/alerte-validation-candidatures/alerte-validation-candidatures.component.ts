@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import candidaturesList from '../../template/candidatures.js';
-import projetsList from '../../template/projets.js';
+import { CandidatureService } from 'src/app/services/candidature.service';
+import { ProjetService } from 'src/app/services/projet.service';
 
 @Component({
   selector: 'app-alerte-validation-candidatures',
@@ -8,15 +8,27 @@ import projetsList from '../../template/projets.js';
   styleUrls: ['./alerte-validation-candidatures.component.css'],
 })
 export class AlerteValidationCandidaturesComponent implements OnInit {
-  candidaturesList: Object = candidaturesList;
-
-  projetsList: Object = projetsList;
+  candidaturesList: any;
+  projetsList: any;
 
   alerte: string = 'Jungle';
 
   afficheText: string = 'Afficher le texte';
   cacheText: string = 'Cacher le texte';
   elementText: string;
+
+  constructor(
+    private serviceCandidat: CandidatureService,
+    private serviceProjet: ProjetService
+  ) {}
+
+  getCandidatureList() {
+    this.candidaturesList = this.serviceCandidat.getAllCanditatures();
+  }
+
+  getProjetList() {
+    this.projetsList = this.serviceProjet.getAllProjets();
+  }
 
   setSaving(element) {
     this.elementText = element.textContent.toString().trim();
@@ -31,21 +43,23 @@ export class AlerteValidationCandidaturesComponent implements OnInit {
   }
 
   accept(idUser) {
-    var idProject;
-    idProject = (<HTMLSelectElement>document.getElementById('s' + idUser)).value;
+    let idProject;
+    idProject = (<HTMLSelectElement>document.getElementById('s' + idUser))
+      .value;
     if (idProject != 0) {
-      console.log(idUser + " - " + idProject);
+      console.log(idUser + ' - ' + idProject);
     } else {
-      alert("Aucun projet n'a été choisi")
+      alert("Aucun projet n'a été choisi");
     }
   }
 
   refuse(idUser) {
-    console.log(idUser)
+    console.log(idUser);
     return idUser;
   }
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getCandidatureList();
+    this.getProjetList();
+  }
 }

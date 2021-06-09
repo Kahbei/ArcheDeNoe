@@ -1,0 +1,144 @@
+<div class="container my-4">
+    <!-- -----BEGIN SEARCH AND INSERT BLOCK----- -->
+    <div class="insertSearchBlock">
+
+        <div class="search-block">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="searchText" id="listSearch" class="form-control search-input"
+                    placeholder="Cherchez un membre du personnel">
+                <div class="input-group-text search-icon">
+                    <i class="bi bi-search icon-monitor"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="insert-block">
+
+            <button type="button" class="btn btn-adno" data-bs-toggle="modal" data-bs-target="#alertModal"
+                data-bs-whatever="@mdo">
+                <i class="bi bi-plus-lg icon-monitor"></i>
+            </button>
+
+            <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="alertModalLabel">Ajout d'un membre du personnel</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">nom :</label>
+                                    <input type="text" class="form-control" id="image-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">prénom :</label>
+                                    <input type="text" class="form-control" id="image-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">email :</label>
+                                    <input type="text" class="form-control" id="image-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">id_site :</label>
+                                    <select class="form-select" aria-label="Default select example" size="1">
+                                        <option *ngFor="let site of siteList" value="{{site.id_site_stockage}}">
+                                            {{site.ville}} - {{site.pays}}</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Ajouter</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- new -->
+
+            <div class="modal fade" id="alertModal2" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="alertModalLabel">Suppression d'un membre du personnel</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4 class="mb-5">Êtes vous certain de vouloir supprimer un membre du personnel ?</h4>
+                            <div class="d-flex flex-row bd-highlight mb-3">
+                                <p>nom : </p>
+                                <p>{{nom}}</p>
+                            </div>
+                            <div class="d-flex flex-row bd-highlight mb-3">
+                                <p>prenom : </p>
+                                <p>{{prenom}}</p>
+                            </div><div class="d-flex flex-row bd-highlight mb-3">
+                                <p>poste : </p>
+                                <p>{{poste}}</p>
+                            </div><div class="d-flex flex-row bd-highlight mb-3">
+                                <p>email : </p>
+                                <p>{{email}}</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Supprimer</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end new-->
+
+        </div>
+    </div>
+    <!-- -----END SEARCH AND INSERT BLOCK----- -->
+
+    <div class="table-responsive mt-4">
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" *ngFor="let personnelKey of personnelKeys">{{ personnelKey }}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let personnelValue of personnelLists | searchFilter : searchText">
+                <tr>
+                    <th scope="row"><input type="text" value="{{ personnelValue.id_personnel }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></th>
+                    <td><input type="text" value="{{ personnelValue.nom }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.prenom }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.poste }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.email }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <td><input type="text" value="{{ personnelValue.id_site.ville }}"
+                            class="{{'it' + personnelValue.id_personnel}}" disabled></td>
+                    <th>
+                        <button (click)="updateMember(personnelValue.id_personnel)" type="button" class="btn btn-adno"
+                            id="{{'bm'+personnelValue.id_personnel}}">
+                            <i class="bi bi-pen"></i>
+                        </button>
+
+                        <button (click)="deleteMember(personnelValue.id_personnel)" type="button" class="btn btn-danger"
+                        data-bs-toggle="modal" data-bs-target="#alertModal2" data-bs-whatever="@mdo">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="d-flex flex-row-reverse">
+            <button type="button" class="btn btn-success p-2 mt-4 ms-3" id="btnSave">Sauvegarder</button>
+            <button type="button" class="btn btn-danger p-2 mt-4 me-3" id="btnDelete">Annuler</button>
+        </div>
+
+    </div>
+</div>

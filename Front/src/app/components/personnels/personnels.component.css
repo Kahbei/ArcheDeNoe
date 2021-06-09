@@ -1,0 +1,20 @@
+#btnSave{
+    width: 10%;
+}
+
+#btnDelete{
+    width: 10%;
+}
+
+#image-name{
+    border-width:1px !important;
+    pointer-events: all;
+}
+
+input{
+    border-width:0px;
+}
+
+p{
+    font-size: 125%;
+}

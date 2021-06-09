@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+:root {
+  --color-main: #f98948;
+  --color-olive: #9b8816;
+  --color-darkBrown: #5d3a00;
+  --color-brown: #684e32;
+  --color-yellow: #f9ea9a;
+}
+
+.bg-adno {
+  background-color: var(--color-main) !important;
+}
+
+.btn-adno {
+  background-color: var(--color-darkBrown);
+  border-color: var(--color-darkBrown);
+  color: #fff;
+}
+
+.btn-adno:hover {
+  background-color: var(--color-brown);
+  border-color: var(--color-brown);
+  color: #fff;
+}
+
+.insertSearchBlock {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  border-bottom: 2px solid var(--color-olive);
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-icon {
+  color: #fff;
+  background-color: var(--color-olive);
+}
+
+.table-hover > tbody > tr:hover {
+  --bs-table-accent-bg: var(--color-yellow);
+}
+
+@media screen and (max-width: 767px) {
+  .search-block {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .insertSearchBlock {
+    flex-direction: column-reverse;
+    align-items: inherit;
+  }
+
+  .insert-block > .btn {
+    width: 100%;
+  }
+}
